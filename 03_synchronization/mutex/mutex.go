@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 	"sync"
 )
 
@@ -19,6 +20,7 @@ func main() {
 		}(i)
 	}
 
+	time.Sleep(2 * time.Second)
 	mu.Lock()
 	fmt.Println("Total: ", total)
 	mu.Unlock()

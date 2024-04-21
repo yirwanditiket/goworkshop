@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	main1()
+	main2()
 }
 
 func main1() {
@@ -35,4 +35,8 @@ func main3() {
 	fmt.Println("hello")
 
 	time.Sleep(1 * time.Second)
+}
+
+func blocking() {
+	fmt.Println("1 + 1 = ", 1 + 1)
 }

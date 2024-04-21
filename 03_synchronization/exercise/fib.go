@@ -8,7 +8,7 @@ import (
 func main() {
 	st := time.Now()
 
-	total := grt(input)
+	total := seq(input)
 
 	fmt.Println("Total:", total)
 	fmt.Println("Elapsed:", time.Since(st))
