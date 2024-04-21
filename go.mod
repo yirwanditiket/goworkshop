@@ -1,3 +1,3 @@
-module github.com/yirwanditiket/teamlearning
+module github.com/yirwanditiket/goworkshop
 
 go 1.21.6
