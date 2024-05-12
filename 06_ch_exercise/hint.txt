@@ -1,0 +1,18 @@
+1. You need some control when launching goroutine in the loop to limit concurrency. You can use the behavior of a channel to block the flow.
+Use buffered channel with fixed size to limit how much message (in this case order process) in one time.
+
+// since 5 is the limit
+limitCh := make(chan struct{}, 5)
+
+// before launching goroutine, send to channel which will be successful if there is still space in the buffer
+// or it will block if the buffer is full
+limitCh <- struct{}{}
+
+// "pop" the value in the channel after goroutine has done with it's job to make space for another goroutine
+defer <-limitCh
+
+2. Wrap the result of buying a car in a struct so you can send value and error to the receiver.
+
+3. Create cancelation signal (using channel or context), and use select to guard the sending part.
+
+4. Close the channel when all goroutines has exit.
