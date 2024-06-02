@@ -42,11 +42,6 @@ type BuyCarResponse struct {
 	Err    error
 }
 
-// fix processOrderConc
-// 1. order execution (0-1-2-3-4.....)
-// 2. proper error handling, stop when there is no more car available
-// 3. limiting concurrency, avoid TooMuchConcurrentRequest
-// 4. making sure all goroutines exit
 func processOrderConc(orders []int) error {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -98,7 +93,6 @@ func processOrderConc(orders []int) error {
 	for car := range carCh {
 		if car.Err != nil {
 			fmt.Println("Didn't buy a car, err: ", car.Err)
-			return car.Err
 		}
 	}
 

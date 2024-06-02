@@ -31,11 +31,6 @@ func main() {
 	fmt.Println("Elapsed ", time.Since(st))
 }
 
-// fix processOrderConc
-// 1. order execution (0-1-2-3-4.....)
-// 2. proper error handling, stop when there is no more car available
-// 3. limiting concurrency, avoid TooMuchConcurrentRequest
-// 4. making sure all goroutines exit
 func processOrderConc(orders []int) error {
 	carCh := make(chan string)
 
