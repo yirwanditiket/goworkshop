@@ -90,6 +90,11 @@ func (cf *CarFactory) Paint(ctx context.Context, inCh <-chan Car, color string) 
 	return outCh
 }
 
+// TODO: Create the implementation
+func (cf *CarFactory) PaintFifo(ctx context.Context, inCh <-chan Car, color string, workerCount int) <-chan Car {
+	return nil
+}
+
 func (cf *CarFactory) Inspect(ctx context.Context, inCh <-chan Car) <-chan error {
 	outCh := make(chan error)
 	go func() {
